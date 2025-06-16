@@ -1,0 +1,15 @@
+.mat-column-accion {
+  width: 32px;
+  text-align: right;
+  font-weight: bold;
+}
+.Bottons {
+  width: 250px;
+}
+
+.miBotton {
+  margin: 5px;
+  background-color: rgb(23, 126, 173);
+  border: 0cap;
+  height: 20px;
+}

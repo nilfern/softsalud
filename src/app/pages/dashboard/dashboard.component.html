@@ -1,0 +1,59 @@
+@defer (when isUserLoaded ) {
+<mat-sidenav-container class="sidenav-container">
+ 
+    <mat-sidenav #sidenav [mode]="sidenavMode" [opened]="isScreenLarge">  
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+   
+      <div>           
+        <app-toolbar [sidenav]="sidenav"></app-toolbar>
+
+        <div class="grid-card">  
+          <mat-card class="card" appearance="outlined">
+            <mat-card-header>             
+              <mat-card-title>{{clientesconcitas.appointmentday}}</mat-card-title>
+              <mat-card-subtitle>Citas del dia</mat-card-subtitle>           
+            </mat-card-header> 
+          </mat-card>
+          <mat-card class="card" appearance="outlined">
+            <mat-card-header>  
+              <mat-card-title>{{clientesconcitas.appointmentdaypending}}</mat-card-title>            
+              <mat-card-subtitle>Citas pendiente del dia</mat-card-subtitle>
+            </mat-card-header> 
+          </mat-card>
+          <mat-card class="card" appearance="outlined">
+            <mat-card-header>             
+              <mat-card-title>{{clientesconcitas.appointmentmonth}}</mat-card-title>
+              <mat-card-subtitle>Citas del mes</mat-card-subtitle>             
+            </mat-card-header> 
+          </mat-card>
+          <mat-card class="card" appearance="outlined">
+            <mat-card-header>             
+              <mat-card-title>{{clientesconcitas.appointmentmonthpending}}</mat-card-title>
+              <mat-card-subtitle>Citas pendiente del mes</mat-card-subtitle>            
+            </mat-card-header> 
+          </mat-card>
+        </div>
+
+          
+          @if ( user.role=="administrador") {           
+            <app-appointmen-list  [fecha]="formattedDate"></app-appointmen-list>
+          }
+          @if ( user.role=="medico") {           
+            <app-appointmenbydoctor-list [doctor]="doctorId" [fecha]="formattedDate"></app-appointmenbydoctor-list>               
+            <div class="grid-card-calendar">  
+              <app-mycalendar [doctor]="doctorId"></app-mycalendar>
+            </div>
+          }    
+       
+      </div>  
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+  
+} @placeholder {
+        <app-loading></app-loading>
+}

@@ -1,0 +1,34 @@
+<div class="mat-list-container">
+  <mat-list role="list">
+    <mat-list-item *ngFor="let cliente of clientesconcitas; let i = index">
+      <div class="list-content">
+        <!-- Avatar/Icono -->
+        <mat-icon matListAvatar>person</mat-icon>
+
+        <!-- Información -->
+        <div class="text-content">
+          <div matLine class="name">{{ cliente.patients.name }}</div>
+          <div matLine class="secondary-text">
+            {{ cliente.patients.surname }}
+          </div>
+        </div>
+
+        <!-- Botón de acción -->
+        <button mat-icon-button color="primary">
+          <mat-icon>info</mat-icon>
+        </button>
+        <div matLine class="{{ cliente.status }}">{{ cliente.status }}</div>
+        <button *ngIf="cliente.status=='pendiente'"
+          mat-stroked-button
+          color="primary"
+        
+          (click)="oncancel(cliente.id)"
+        >
+          Cancelar
+        </button>
+      </div>
+      <!-- Separador, pero no en el último elemento -->
+      <mat-divider *ngIf="i < clientesconcitas.length - 1"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

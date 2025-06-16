@@ -1,0 +1,114 @@
+<h2 mat-dialog-title>Citas</h2>
+<form class="container" [formGroup]="appoinmentForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+
+    <div class="form-grid-filter">
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Cita</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date_appointments" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Especialidad</mat-label>
+          <mat-select formControlName="especialidad" required (selectionChange)="onEspecialidadSeleccionada($event)">
+            <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad.id">
+              {{ especialidad.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button class="filter" color="primary" type="button" (click)="cargarDisponibilidadMedico()">Filtrar</button>
+
+    </div>
+
+
+
+    <div class="form-grid">
+
+      <div class="action-buttons">
+        <button mat-button (click)="accordion().openAll()">Expandir Todo</button>
+        <button mat-button (click)="accordion().closeAll()">Ocultar Todol</button>
+      </div>
+      <mat-accordion class="headers-align" multi>
+
+        <div class="container">
+
+          <mat-expansion-panel *ngFor="let doctor of doctores">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Datos Doctor </mat-panel-title>
+              <mat-panel-description>
+                {{ doctor?.doctor?.name }} {{ doctor?.doctor?.surname }}
+                <mat-icon>date_range</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-radio-group formControlName="selectedDisponibilidad" (change)="onSeleccionarCita($event)">
+              <mat-radio-button *ngFor="let cita of doctor?.availabilities" [value]="cita">
+                <div>
+                  Horas: {{ cita.start_hour }} - {{ cita.end_hour }}
+                </div>
+              </mat-radio-button>
+            </mat-radio-group>
+
+          </mat-expansion-panel>
+
+        </div>
+
+
+      </mat-accordion>
+
+
+
+
+    </div>
+
+
+    <input type="hidden" formControlName="start_hour" required />
+    <input type="hidden" formControlName="doctor_id" required />
+    <input type="hidden" formControlName="availabily_id" required />
+    <input type="hidden" formControlName="patient_id" required />
+
+
+
+
+    <div class="form-grid-patients">
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Paciente</mat-label>
+          <input matInput formControlName="dni" required (keydown.enter)="onEnterPatient($event)">
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="name" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="surname" required>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+
+</form>

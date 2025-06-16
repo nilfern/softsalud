@@ -1,0 +1,19 @@
+.user-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Hace la imagen circular */
+    margin-right: 1px;
+    margin-top: 10px;
+}  
+
+mat-toolbar{
+    width: 100%;
+    background-color: #0f5787;
+    color: aliceblue;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+ 
+  

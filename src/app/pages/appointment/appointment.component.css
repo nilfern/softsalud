@@ -1,0 +1,17 @@
+.sidenav-container {
+  height: 100vh;
+}
+mat-sidenav {
+  width: 250px;
+}
+mat-sidenav-content {
+  padding: 1px;
+}
+
+.text-center {
+  margin: 10px;
+  padding: 30px;
+}
+mat-card {
+  padding: 5px;
+}

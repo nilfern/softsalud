@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>Citas</h2>
+<form
+  class="example-container"
+  [formGroup]="appoinmentForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-dialog-content>
+    <div class="form-grid-filter">
+      <div class="form-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Cita</mat-label>
+          <input  matInput   [matDatepicker]="picker"   formControlName="date_appointments"   required  />
+          <mat-datepicker-toggle  matSuffix  [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    
+
+      <div class="form-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Doctor</mat-label>
+          <mat-select formControlName="doctor_id" required>
+            <mat-option *ngFor="let doctor of doctores" [value]="doctor.id">
+              {{ doctor.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Hora de Cita</mat-label>
+          <input matInput type="text" formControlName="start_hour" required />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button  color="primary" type="button"  (click)="cargarDisponibilidadMedico()" >
+        Filtrar
+      </button>
+    </div>
+
+    <div class="container">
+      <mat-radio-group
+        formControlName="selectedDisponibilidad" (change)="onSeleccionarCita($event)"  >
+        <mat-radio-button *ngFor="let cita of disponilidades" [value]="cita">
+          <div>Hora: {{ cita.start_hour }} - {{ cita.end_hour }}</div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="form-grid">
+      <input type="hidden" formControlName="availabily_id" required />
+
+      <div *ngFor="let doctor of doctores">
+        <h3>
+          Doctor: {{ doctor?.doctor?.name }} {{ doctor?.doctor?.surname }}
+        </h3>
+      </div>
+
+      <article *ngFor="let doctor of doctores">
+        <h3>{{ doctor?.doctor?.name }}</h3>
+      </article>
+
+    
+    </div>
+
+    <div class="form-item">
+      <mat-form-field appearance="outline">
+        <mat-label>Paciente</mat-label>
+        <input matInput formControlName="patient_id"  required  (keyup.enter)="onEnterPatient()"  />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</form>

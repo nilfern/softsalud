@@ -1,0 +1,30 @@
+<form [formGroup]="timeForm" (ngSubmit)="onSubmit()">
+  <div class="container_doctor">
+    <mat-card>
+      <div class="custom-calendar">
+        <mat-calendar [(selected)]="selected" (selectedChange)="onDateChange($event)"></mat-calendar>
+      </div>
+    </mat-card>
+
+    <input type="hidden" class="form-control" formControlName="fecha" />
+
+    <input type="hidden" class="form-control" formControlName="iddoctor" readonly />
+
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let slot of timeSlots; let i = index">
+          <td>
+            <mat-card>
+              <div class="form-horizontal">
+                <input  type="text" class="form-control" [value]="slot.start" [formControlName]="'startTime-' + i" readonly />
+                <input  type="text" class="form-control" [value]="slot.end"  [formControlName]="'endTime-' + i" readonly  />
+                <input  type="hidden" class="form-control" [value]="0" [formControlName]="'idavailability-' + i" readonly />
+                <mat-checkbox [formControlName]="'estado-' + i" checked="true" (click)="onCheckboxClicked($event, i)" ></mat-checkbox>
+              </div>
+            </mat-card>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

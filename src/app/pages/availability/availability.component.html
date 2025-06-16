@@ -1,0 +1,32 @@
+@defer (when isUserLoaded ) {
+
+  <mat-sidenav-container class="sidenav-container">
+   
+     
+    <mat-sidenav #sidenav [mode]="sidenavMode" [opened]="isScreenLarge">
+       <app-sidebar></app-sidebar>
+     </mat-sidenav>
+     
+     <mat-sidenav-content>
+       <!-- Contenido principal de la página -->
+      
+       <div>     
+         <!-- Otros contenidos -->
+         <app-toolbar [sidenav]="sidenav"></app-toolbar>
+       
+         <mat-card class="text-center" fxLayout="column" fxLayoutAlign="center center">
+          <app-doctor-list></app-doctor-list>
+        </mat-card>
+        
+       </div> 
+         
+ 
+     </mat-sidenav-content>
+ 
+  </mat-sidenav-container>
+
+
+
+} @placeholder {
+  <app-loading></app-loading>
+}

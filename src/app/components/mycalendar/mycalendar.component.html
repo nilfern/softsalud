@@ -1,0 +1,28 @@
+<div class="container">
+  <table class="calendar">
+    <thead>
+      <tr>
+        <th *ngFor="let day of ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']">
+          {{ day }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of weeks">
+        <td *ngFor="let day of week" [class.outside]="!isSameMonth(day)" (click)="onDayClick(day)" >
+          {{ day.getDate() }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="appointments">
+    <!-- Aquí va el listado de citas -->
+    <h2>Listado de Citas</h2>
+    <ul>
+      <li *ngFor="let cliente of clientesconcitas">
+        Cita {{ cliente.start_hour }} {{ cliente.patients.name }} {{ cliente.patients.surname }}
+      </li>
+    </ul>
+  </div>
+</div>

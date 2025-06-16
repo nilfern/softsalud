@@ -1,0 +1,33 @@
+@defer (when isUserLoaded ) {
+  <mat-toolbar>
+     <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+      </button>
+        
+      <span>SOFSALUD</span>
+      <span class="spacer"></span>
+         
+      <span>{{ myuser.name }}</span>
+      <button mat-button [matMenuTriggerFor]="userMenu" >
+        <img src="http://localhost/laravel/softsalud/public/storage/{{ myuser.photo }}" alt="Usuario" class="user-image">         
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          Perfil
+        </button>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          Configuración
+        </button>
+        <button mat-menu-item (click)="salir()">
+          <mat-icon>logout</mat-icon>
+          Cerrar sesión
+          </button>
+      </mat-menu>
+  </mat-toolbar> 
+
+} @placeholder {
+  <app-loading></app-loading>
+}
+  
