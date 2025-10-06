@@ -3,10 +3,10 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptorFn } from '@angular
 import { Observable } from 'rxjs';
 
   export const AuthInterceptor: HttpInterceptorFn = (request, next) => {
-    const token = localStorage.getItem('token');  // Obtiene el token almacenado en localStorage
+    const token = localStorage.getItem('token'); 
 
     if (token) {
-      // Clona la solicitud y añade el encabezado de autorización
+     
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
@@ -14,5 +14,5 @@ import { Observable } from 'rxjs';
       });
     }
  
-   return next(request);  // Envía la solicitud al siguiente manejador
+   return next(request);  
   };

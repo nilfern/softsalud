@@ -41,6 +41,7 @@ export class DashboardComponent {
   formattedDate = this.datePipe.transform(this.rawDate, 'yyyy-MM-dd');
 
   doctorId: string | null = null;
+  patientId: string | null = null;
   clientesconcitas: any;
   user: any;
   isUserLoaded = false;
@@ -69,9 +70,17 @@ export class DashboardComponent {
         if(user.role=="medico"){     
          this.doctorId=user.doctors[0].id; 
          this.getApointmentByDoctorCount(Number(this.doctorId));     
-        }else{
-          this.getApointmentAllCount(); 
         }
+         if(user.role=="paciente"){     
+         this.patientId=user.patients[0].id; 
+         ///this.getApointmentByDoctorCount(Number(this.doctorId));  
+         this.getApointmentAllCount();  
+        // this.isUserLoaded = true;  
+        }
+
+       if(user.role=="empleado" ||user.role=="administrador") {
+          this.getApointmentAllCount(); 
+         }
    
       }   
     

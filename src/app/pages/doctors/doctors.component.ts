@@ -14,12 +14,12 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   selector: 'app-doctors',
   standalone: true,
   imports: [
+    DoctorListComponent,
     MatSidenavModule,
     SidebarComponent,
     LoadingComponent,
     ToolbarComponent,
     MatCardModule,
-    DoctorListComponent,
   ],
   templateUrl: './doctors.component.html',
   styleUrl: './doctors.component.css',
@@ -50,19 +50,23 @@ export class DoctorsComponent {
       });
 
     this.authService.user$.subscribe((user) => {
-      this.user = user; // Obtiene los datos del usuario
+      this.user = user;
       this.isUserLoaded = !!user;
     });
   }
 
-  openDialog() {
+  openDialog(doctorId: number, accion: string) {
     const dialogRef = this.dialog.open(ModalDoctorformComponent, {
-      width: '1020px', // Ajusta el tamaño de la ventana modal
+      width: '1020px',
+      data: {
+        id: doctorId,
+        accion: accion,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'medico-agregado') {
-        this.doctorList.getDoctors(); // actualiza la tabla
+        this.doctorList.getDoctors();
       }
     });
   }
@@ -70,6 +74,6 @@ export class DoctorsComponent {
   @ViewChild(DoctorListComponent) doctorList!: DoctorListComponent;
 
   actualizarLista() {
-    this.doctorList.getDoctors(); // Llamamos el método para actualizar la lista
+    this.doctorList.getDoctors();
   }
 }

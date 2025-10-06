@@ -1,10 +1,11 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule, viewChild } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormBuilder, Validators,} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -49,6 +50,7 @@ import {
     MatDialogContent,
     MatDialogTitle,
     CommonModule,
+    MatButtonToggleModule,
     FormsModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,6 +59,8 @@ import {
   providers: [DatePipe, provideNativeDateAdapter()],
 })
 export class ModalAppointmentformComponent implements OnInit {
+  //@Input() role!: string | null;
+  @Input() user!: any;
   accordion = viewChild.required(MatAccordion);
 
   disponilidades: any[] = [];
@@ -96,6 +100,12 @@ export class ModalAppointmentformComponent implements OnInit {
   ngOnInit(): void {
     this.cargarDoctores();
     this.cargarEspecialidades();
+   ///// console.log(this.user.patients[0].dni);
+    if(this.user.role=="paciente"){ 
+        this.appoinmentForm.get(`patient_id`)?.patchValue(this.user.patients[0].id);
+      //  this.appoinmentForm.get(`name`)?.patchValue(this.user.patients[0].name);
+       // this.appoinmentForm.get(`surname`)?.patchValue(this.user.patients[0].surname);
+      }
   }
 
   cargarDoctores(): void {
@@ -140,6 +150,10 @@ export class ModalAppointmentformComponent implements OnInit {
   onEspecialidadSeleccionada(event: any): void {
     console.log('seleccionado:', event.value);
   }
+  onMedicoSeleccionado(event: any): void {
+    console.log('seleccionado:', event.value);
+    this.disponilidades=event.value;
+  }
 
   onSeleccionarCita(event: any): void {
     this.appoinmentForm.get(`start_hour`)?.patchValue(event.value.start_hour);
@@ -174,4 +188,28 @@ export class ModalAppointmentformComponent implements OnInit {
       console.log('Formulario no válido');
     }
   }
+
+
+ onFechaSeleccionada(event: any) {
+  const fecha = event.value; 
+  
+  //const rawDate = this.appoinmentForm.value.date_appointments;
+    const formattedDate = this.datePipe.transform(fecha, 'yyyy-MM-dd'); // Formato deseado
+  console.log("Fecha seleccionada:", formattedDate);
+  console.log(this.user.doctors[0].id);
+
+this.availabilityDoctorService
+      .getavailabilityID(
+        Number(this.user.doctors[0].id),
+        formattedDate
+      )
+      .subscribe((response) => {
+        this.disponilidades = response.data;
+        console.log( this.disponilidades);
+        this.cdr.detectChanges();
+      });
+
+ 
+ }
 }
+

@@ -1,36 +1,46 @@
 <div>
-  <h2>Doctores</h2>
+  <h2>Medicos</h2>
 
   <mat-label>Fitrar</mat-label>
   <input matInput placeholder="Buscar" (keyup)="applyFilter($event)" />
 
   <div style="overflow-x: auto">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-      
       <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
         <td mat-cell *matCellDef="let doctor">{{ doctor.name }}</td>
       </ng-container>
 
-     
       <ng-container matColumnDef="apellido">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
         <td mat-cell *matCellDef="let doctor">{{ doctor.surname }}</td>
       </ng-container>
 
-     
       <ng-container matColumnDef="dni">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfon</th>
         <td mat-cell *matCellDef="let doctor">{{ doctor.dni }}</td>
       </ng-container>
 
-     
-      <ng-container matColumnDef="seleccionar">
-        <th mat-header-cell *matHeaderCellDef>Seleccionar</th>
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+
         <td mat-cell *matCellDef="let doctor">
-          <button  mat-raised-button  color="primary"  (click)="seleccionarRegistro(doctor)"  >
-            Seleccionar
-          </button>
+          <div class="Bottons">
+            <button
+              class="miBotton"
+              color="primary"
+              (click)="actualizarRegistro(doctor.id, 'Actualizar')"
+            >
+              Actualizar
+            </button>
+            <button
+              class="miBotton"
+              color="primary"
+              (click)="eliminarRegistro(doctor.id)"
+            >
+              Eliminar
+            </button>
+          </div>
         </td>
       </ng-container>
 
@@ -39,6 +49,11 @@
     </table>
   </div>
 
-  <mat-paginator  [length]="totalDoctores" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" (page)="pageChange($event)" >
+  <mat-paginator
+    [length]="totalClientes"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageChange($event)"
+  >
   </mat-paginator>
 </div>

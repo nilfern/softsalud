@@ -18,10 +18,10 @@
           <mat-icon>info</mat-icon>
         </button>
         <div matLine class="{{ cliente.status }}">{{ cliente.status }}</div>
-        <button *ngIf="cliente.status=='pendiente'"
+        <button
+          *ngIf="cliente.status == 'pendiente'"
           mat-stroked-button
           color="primary"
-        
           (click)="oncancel(cliente.id)"
         >
           Cancelar

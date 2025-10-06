@@ -11,16 +11,26 @@
     <div>
       <!-- Otros contenidos -->
       <app-toolbar [sidenav]="sidenav"></app-toolbar>
-      <button mat-raised-button color="primary" (click)="openDialog()">
-        Abrir Formulario
-      </button>
+     
+     
       <mat-card
         class="text-center"
         fxLayout="column"
         fxLayoutAlign="center center"
       >
+ <button mat-raised-button color="primary" (click)="openDialog(0, 'Agregar')">
+        Abrir Formulario
+      </button>
       </mat-card>
-    </div>
+    
+     <mat-card
+        class="text-center"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+      <app-specialty-list></app-specialty-list>
+      </mat-card>
+      </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

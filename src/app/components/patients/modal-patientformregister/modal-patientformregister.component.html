@@ -1,0 +1,108 @@
+<h2 mat-dialog-title>Registrar</h2>
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <div class="form-grid">
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Identificacion</mat-label>
+          <input matInput formControlName="dni" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="surname" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input
+            matInput
+            formControlName="phone"
+            type="tel"
+            placeholder="1234567890"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthdate"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <label>Genero: </label>
+        <mat-radio-group formControlName="genre" aria-label="Género">
+          <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+          <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <div class="upload-container">
+          <label class="upload-label" for="fileInput">
+            <svg width="20" height="20" viewBox="0 0 20 20">
+              <path d="M10 0L6 4h3v7h2V4h3L10 0zm-9 16v2h18v-2H1z" />
+            </svg>
+            Foto
+          </label>
+          <input
+            type="file"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            hidden
+          />
+          <div class="filename">
+            {{ fileName || "Ningún archivo seleccionado" }}
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" formControlName="role" value="paciente" />
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="acciones">
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button mat-raised-button mat-dialog-close color="primary">Close</button>
+    </div>
+  </mat-dialog-actions>
+</form>

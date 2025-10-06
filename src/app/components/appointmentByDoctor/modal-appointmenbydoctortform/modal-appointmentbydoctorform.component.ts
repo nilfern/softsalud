@@ -19,12 +19,10 @@ import { SpecialtyService } from '../../../services/specialty.service';
 import { AppointmentService } from '../../../services/appointment.service';
 import { AvailabilityDoctorService } from '../../../services/availability-doctor.service';
 import { PatientService } from '../../../services/patient.service';
-
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ChangeDetectionStrategy, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-
 import {
   MatDialog,
   MatDialogActions,
@@ -32,7 +30,6 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-modal-appointmentByDoctorform',
@@ -139,9 +136,7 @@ export class ModalAppointmentbydoctorformComponent implements OnInit {
       });
   }
 
- 
-
-  onSeleccionarCita(event: any): void {    
+  onSeleccionarCita(event: any): void {
     this.appoinmentForm.get(`start_hour`)?.patchValue(event.value.start_hour);
     this.appoinmentForm.get(`availabily_id`)?.patchValue(event.value.id);
   }
@@ -158,7 +153,7 @@ export class ModalAppointmentbydoctorformComponent implements OnInit {
         .createappointment(this.appoinmentForm.value)
         .subscribe((res) => {
           console.log('se ha creado correctamente', res);
-          this.appoinmentForm.reset();        
+          this.appoinmentForm.reset();
         });
     } else {
       console.log('Formulario no válido');

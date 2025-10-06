@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Esto es opcional, ajusta la altura según tus necesidades */
+  height: 50vh; 
 }
 
 .lds-ripple {

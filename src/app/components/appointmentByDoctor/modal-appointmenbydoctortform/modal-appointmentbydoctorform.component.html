@@ -9,13 +9,19 @@
       <div class="form-item">
         <mat-form-field appearance="fill">
           <mat-label>Fecha de Cita</mat-label>
-          <input  matInput   [matDatepicker]="picker"   formControlName="date_appointments"   required  />
-          <mat-datepicker-toggle  matSuffix  [for]="picker"></mat-datepicker-toggle>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date_appointments"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
-
-    
 
       <div class="form-item">
         <mat-form-field appearance="fill">
@@ -35,14 +41,21 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button  color="primary" type="button"  (click)="cargarDisponibilidadMedico()" >
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="cargarDisponibilidadMedico()"
+      >
         Filtrar
       </button>
     </div>
 
     <div class="container">
       <mat-radio-group
-        formControlName="selectedDisponibilidad" (change)="onSeleccionarCita($event)"  >
+        formControlName="selectedDisponibilidad"
+        (change)="onSeleccionarCita($event)"
+      >
         <mat-radio-button *ngFor="let cita of disponilidades" [value]="cita">
           <div>Hora: {{ cita.start_hour }} - {{ cita.end_hour }}</div>
         </mat-radio-button>
@@ -61,14 +74,17 @@
       <article *ngFor="let doctor of doctores">
         <h3>{{ doctor?.doctor?.name }}</h3>
       </article>
-
-    
     </div>
 
     <div class="form-item">
       <mat-form-field appearance="outline">
         <mat-label>Paciente</mat-label>
-        <input matInput formControlName="patient_id"  required  (keyup.enter)="onEnterPatient()"  />
+        <input
+          matInput
+          formControlName="patient_id"
+          required
+          (keyup.enter)="onEnterPatient()"
+        />
       </mat-form-field>
     </div>
   </mat-dialog-content>

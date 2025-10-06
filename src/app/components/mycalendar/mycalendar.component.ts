@@ -74,7 +74,7 @@ export class MycalendarComponent {
       calendar.push(week);
       week = [];
     }
-   
+
     this.weeks = calendar;
   }
 
@@ -92,7 +92,6 @@ export class MycalendarComponent {
   onDayClick(day: Date): void {
     console.log('Día seleccionado:', day);
     this.getappointmentByDoctoR(day);
- 
   }
 
   getappointmentByDoctoR(day: Date): void {

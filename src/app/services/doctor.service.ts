@@ -24,12 +24,18 @@ export class DoctorService {
   }
 
   getDoctorID(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`)
+    return this.http.get(`${this.apiUrl}/showbyid/${id}`)
   }
 
   createDoctor(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, data)
   }
+  updateDoctor(id: number,data: any): Observable<any> {  
+    return this.http.post(`${this.apiUrl}/${id}`, data)
+  }
 
+  deleteDoctors(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 
 }

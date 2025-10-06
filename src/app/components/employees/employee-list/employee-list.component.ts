@@ -68,13 +68,17 @@ export class EmployeeListComponent implements OnInit {
 
   eliminarRegistro(idEmployee: Number): void {
     console.log('Registro seleccionado:', idEmployee);
+    this.employeesService
+      .deleteEmployees(Number(idEmployee))
+      .subscribe((response) => {
+        this.getEmployees();
+      });
   }
 
   getEmployees(pageIndex: number = 0, pageSize: number = 10): void {
     this.employeesService.getEmployees(pageIndex + 1).subscribe((response) => {
       this.dataSource = new MatTableDataSource(response.data);
       this.totalClientes = response.total;
-      // this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }

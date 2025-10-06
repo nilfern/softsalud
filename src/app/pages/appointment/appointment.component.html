@@ -6,13 +6,15 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <!-- Contenido principal de la página -->
     <div>
-      <!-- Otros contenidos -->
       <app-toolbar [sidenav]="sidenav"></app-toolbar>
 
-      <mat-card  class="text-center"  fxLayout="column"   fxLayoutAlign="center center" >
-        <app-modal-appointmentform></app-modal-appointmentform>
+      <mat-card
+        class="text-center"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <app-modal-appointmentform [user]="user"></app-modal-appointmentform>
       </mat-card>
     </div>
   </mat-sidenav-content>

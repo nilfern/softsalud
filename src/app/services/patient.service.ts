@@ -12,17 +12,25 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatiens(page: number): Observable<any> {
+  getPatients(page: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?page=${page}`);
   }
 
   getPatientID(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`)
+    return this.http.get(`${this.apiUrl}/showbyid/${id}`)
   }
 
   createPatient(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, data)
   }
 
+   updatePatient(id: number,data: any): Observable<any> {  
+    return this.http.post(`${this.apiUrl}/${id}`, data)
+  }
+
+ deletePatients(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+    
 
 }

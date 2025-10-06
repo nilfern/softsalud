@@ -17,16 +17,34 @@ export class AppointmenListComponent {
   clientesconcitas: any[] = [];
 
   @Input() fecha!: string | null;
+  @Input() role!: string | null;
+  @Input() id!: string | null;
 
-  constructor( private appoinmentService: AppointmentService, private router: Router) {}
+  constructor(
+    private appoinmentService: AppointmentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getappointmentByDoctoR();
+    if (this.role == 'paciente') {
+      this.getappointmentByPatient();
+    }
+    if (this.role == 'empleado' || this.role == 'administrador') {
+      this.getappointmentByDoctoR();
+    }
   }
 
   getappointmentByDoctoR(): void {
     this.appoinmentService
       .getappointmentAll(this.fecha)
+      .subscribe((response) => {
+        this.clientesconcitas = response.data;
+      });
+  }
+
+  getappointmentByPatient(): void {
+    this.appoinmentService
+      .getappointmentByPatient(Number(this.id), this.fecha)
       .subscribe((response) => {
         this.clientesconcitas = response.data;
       });

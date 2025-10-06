@@ -51,6 +51,7 @@ export class AppointmentComponent {
 
     this.authService.user$.subscribe((user) => {
       this.user = user; // Obtiene los datos del usuario
+      console.log(user);
       this.isUserLoaded = !!user;
     });
   }

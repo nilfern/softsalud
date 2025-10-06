@@ -19,7 +19,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatSidenavModule,
     SidebarComponent,
     ToolbarComponent,
-    MatCardModule,   
+    MatCardModule,
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css',
@@ -27,7 +27,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class EmployeesComponent {
   sidenavMode: 'over' | 'side' = 'side';
   isScreenLarge = true;
-
   user: any;
   isUserLoaded = false;
 
@@ -51,14 +50,14 @@ export class EmployeesComponent {
       });
 
     this.authService.user$.subscribe((user) => {
-      this.user = user; // Obtiene los datos del usuario
+      this.user = user;
       this.isUserLoaded = !!user;
     });
   }
 
   openDialog(employeeId: number, accion: string) {
     const dialogRef = this.dialog.open(ModalEmployeeformComponent, {
-      width: '1020px', // Ajusta el tamaño de la ventana modal
+      width: '1020px',
       data: {
         id: employeeId,
         accion: accion,
@@ -67,7 +66,8 @@ export class EmployeesComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'empleado-agregado') {
-        this.employeeList.getEmployees(); // actualiza la tabla
+        this.employeeList.getEmployees();
+        console.log('enttro');
       }
     });
   }
@@ -75,6 +75,6 @@ export class EmployeesComponent {
   @ViewChild(EmployeeListComponent) employeeList!: EmployeeListComponent;
 
   actualizarLista() {
-    this.employeeList.getEmployees(); // Llamamos el método para actualizar la lista
+    this.employeeList.getEmployees();
   }
 }

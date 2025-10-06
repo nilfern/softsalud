@@ -7,15 +7,20 @@
      </mat-sidenav>
      
      <mat-sidenav-content>
-       <!-- Contenido principal de la página -->
+     
       
          <div>     
-           <!-- Otros contenidos -->
+        
            <app-toolbar [sidenav]="sidenav"></app-toolbar>
-           <!--  <button mat-raised-button color="primary" (click)="openDialog()">Abrir Formulario</button>-->
-           <mat-card class="text-center" fxLayout="column" fxLayoutAlign="center center">
-             <app-modal-patientform></app-modal-patientform>
-           </mat-card>
+          <mat-card class="text-center" fxLayout="column" fxLayoutAlign="center center" >
+        <button   mat-raised-button color="primary"  (click)="openDialog(0, 'Agregar')" >
+          Abrir Formulario
+        </button>
+      </mat-card>
+      <mat-card class="text-center"  fxLayout="column"  fxLayoutAlign="center center" >
+         <app-patient-list></app-patient-list>
+      </mat-card>
+           
           
           </div>  
  

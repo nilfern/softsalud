@@ -18,10 +18,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { EmployeeService } from '../../../services/employee.service';
 import { ToastrService } from 'ngx-toastr';
 import { CanActivate, Router } from '@angular/router';
-
-import { MatDialogRef } from '@angular/material/dialog'; // Asegúrate de importar esto
+import { MatDialogRef } from '@angular/material/dialog'; 
 import { MatIcon } from '@angular/material/icon';
-
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import {
@@ -37,12 +35,10 @@ import {
   standalone: true,
   imports: [
     CommonModule,
-
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
@@ -59,15 +55,10 @@ import {
 })
 export class ModalEmployeeformComponent implements OnInit {
   imageUrl: string | ArrayBuffer | null = null;
-
   fileName: string = '';
-
   hide = true;
-
   findempleado!: String;
-
   employeeForm: FormGroup;
-
   id: number;
   accion: string;
 
@@ -104,9 +95,9 @@ export class ModalEmployeeformComponent implements OnInit {
         dni: [
           { value: '', disabled: this.data.accion === 'Actualizar' },
           Validators.required,
-        ],       
+        ],
         name: ['', Validators.required],
-        surname: ['', Validators.required],       
+        surname: ['', Validators.required],
         email: [
           { value: '', disabled: this.data.accion === 'Actualizar' },
           [Validators.required, Validators.email],
@@ -116,8 +107,8 @@ export class ModalEmployeeformComponent implements OnInit {
         gross_salary: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
         phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
         address: ['', Validators.required],
-        genre: ['', Validators.required],       
-          password:  [
+        genre: ['', Validators.required],
+        password: [
           { value: '', disabled: this.data.accion === 'Actualizar' },
           Validators.required,
         ],
@@ -162,7 +153,7 @@ export class ModalEmployeeformComponent implements OnInit {
   onSubmit() {
     if (this.employeeForm.valid) {
       const formData = new FormData();
-      // Añades todos los campos uno por uno
+     
       formData.append('dni', this.employeeForm.get('dni')?.value);
       formData.append('name', this.employeeForm.get('name')?.value);
       formData.append('surname', this.employeeForm.get('surname')?.value);
@@ -179,7 +170,7 @@ export class ModalEmployeeformComponent implements OnInit {
       formData.append('role', this.employeeForm.get('role')?.value);
 
       const rawDate = this.employeeForm.get('birthdate')?.value;
-      const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); // Formato deseado
+      const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); 
       if (!formattedDate) {
         console.error('La fecha está vacía o mal formada');
         return;
@@ -194,7 +185,7 @@ export class ModalEmployeeformComponent implements OnInit {
       console.log('Formulario enviado:', this.employeeForm.value);
       console.log('el valor de nombre:', this.employeeForm.get('name')?.value);
 
-        console.log('VALORES enviado:', formData);
+      console.log('VALORES enviado:', formData);
       if (this.data.accion == 'Agregar') {
         this.employeeService.createEmployee(formData).subscribe((res) => {
           console.log(res);
@@ -221,8 +212,11 @@ export class ModalEmployeeformComponent implements OnInit {
           }
         });
       }
+
       if (this.data.accion == 'Actualizar') {
-        this.employeeService.updateEmployee(this.data.id, formData).subscribe((res) => {
+        this.employeeService
+          .updateEmployee(this.data.id, formData)
+          .subscribe((res) => {
             console.log(res);
             if (res.statusCode == '200') {
               console.log('se ha Actualizado correctamente', res);

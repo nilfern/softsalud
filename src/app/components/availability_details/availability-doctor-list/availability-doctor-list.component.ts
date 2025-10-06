@@ -52,11 +52,6 @@ export class AvailabilityDoctorListComponent implements OnInit {
 
   timeForm!: FormGroup;
   timeSlots = [
-    { start: '6:00 a. m.', end: '6:15 a. m.' },
-    { start: '6:15 a. m.', end: '6:30 a. m.' },
-    { start: '6:30 a. m.', end: '6:45 a. m.' },
-    { start: '6:45 a. m.', end: '7:00 a. m.' },
-
     { start: '7:00 a. m.', end: '7:15 a. m.' },
     { start: '7:15 a. m.', end: '7:30 a. m.' },
     { start: '7:30 a. m.', end: '7:45 a. m.' },
@@ -135,7 +130,7 @@ export class AvailabilityDoctorListComponent implements OnInit {
         console.error('La fecha está vacía o mal formada');
         return;
       }
-      const formData = new FormData();    
+      const formData = new FormData();
       formData.append('date_availabilities', formattedDate);
       formData.append('doctor_id', doctor);
       formData.append('start_hour', start);

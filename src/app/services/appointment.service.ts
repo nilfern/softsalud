@@ -29,6 +29,9 @@ export class AppointmentService {
   getappointmentByDoctor(id: number, fecha: String | null): Observable<any> {
     return this.http.get(`${this.apiUrl}/appointmentbydoctor/${id}/${fecha}`)
   }
+  getappointmentByPatient(id: number, fecha: String | null): Observable<any> {
+    return this.http.get(`${this.apiUrl}/appointmentbypatient/${id}/${fecha}`)
+  }
 
   getappointmentAll(fecha: String | null): Observable<any> {
     return this.http.get(`${this.apiUrl}/appointmentall/${fecha}`)

@@ -13,9 +13,16 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-availability-details',
   standalone: true,
-  imports: [MatSidenavModule, SidebarComponent, LoadingComponent, ToolbarComponent, MatCardModule, AvailabilityDoctorListComponent],
+  imports: [
+    MatSidenavModule,
+    SidebarComponent,
+    LoadingComponent,
+    ToolbarComponent,
+    MatCardModule,
+    AvailabilityDoctorListComponent,
+  ],
   templateUrl: './availability-details.component.html',
-  styleUrl: './availability-details.component.css'
+  styleUrl: './availability-details.component.css',
 })
 export class AvailabilityDetailsComponent implements OnInit {
   sidenavMode: 'over' | 'side' = 'side';
@@ -25,16 +32,19 @@ export class AvailabilityDetailsComponent implements OnInit {
   isUserLoaded = false;
   doctorId: string | null = null;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private breakpointObserver: BreakpointObserver) { }
-
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
-    // Captura el ID del doctor desde la URL
     this.doctorId = this.route.snapshot.paramMap.get('id');
     console.log('ID del doctor seleccionado:', this.doctorId);
 
-    this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Small, Breakpoints.XSmall])
-      .subscribe(result => {
+    this.breakpointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe((result) => {
         if (result.matches) {
           this.sidenavMode = 'over';
           this.isScreenLarge = false;
@@ -45,10 +55,8 @@ export class AvailabilityDetailsComponent implements OnInit {
       });
 
     this.authService.user$.subscribe((user) => {
-      this.user = user; // Obtiene los datos del usuario
+      this.user = user;
       this.isUserLoaded = !!user;
     });
-
   }
-
 }
