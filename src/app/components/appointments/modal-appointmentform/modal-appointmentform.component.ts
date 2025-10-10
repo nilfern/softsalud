@@ -22,6 +22,7 @@ import { ChangeDetectionStrategy, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Router, RouterModule } from '@angular/router';
 
 import {
   MatDialog,
@@ -51,6 +52,7 @@ import {
     MatDialogTitle,
     CommonModule,
     MatButtonToggleModule,
+    RouterModule,
     FormsModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -100,11 +102,9 @@ export class ModalAppointmentformComponent implements OnInit {
   ngOnInit(): void {
     this.cargarDoctores();
     this.cargarEspecialidades();
-   ///// console.log(this.user.patients[0].dni);
+   
     if(this.user.role=="paciente"){ 
-        this.appoinmentForm.get(`patient_id`)?.patchValue(this.user.patients[0].id);
-      //  this.appoinmentForm.get(`name`)?.patchValue(this.user.patients[0].name);
-       // this.appoinmentForm.get(`surname`)?.patchValue(this.user.patients[0].surname);
+        this.appoinmentForm.get(`patient_id`)?.patchValue(this.user.patients[0].id);     
       }
   }
 
@@ -121,7 +121,7 @@ export class ModalAppointmentformComponent implements OnInit {
 
   cargarDisponibilidadMedico(): void {
     const rawDate = this.appoinmentForm.value.date_appointments;
-    const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); // Formato deseado
+    const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); 
 
     this.availabilityDoctorService
       .getavailabilityDoctorShow(
@@ -138,7 +138,7 @@ export class ModalAppointmentformComponent implements OnInit {
   onEnterPatient(event: Event): void {
     event.preventDefault();
     this.patientService
-      .getPatientID(this.appoinmentForm.value.dni)
+      .getPatientDNI(this.appoinmentForm.value.dni)
       .subscribe((response) => {
         console.log(response.data);
         this.appoinmentForm.get(`patient_id`)?.patchValue(response.data.id);
@@ -163,7 +163,7 @@ export class ModalAppointmentformComponent implements OnInit {
 
   onSubmit() {
     const rawDate = this.appoinmentForm.value.date_appointments;
-    const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); // Formato deseado
+    const formattedDate = this.datePipe.transform(rawDate, 'yyyy-MM-dd'); 
     this.appoinmentForm.value.date_appointments = formattedDate;
 
     if (this.appoinmentForm.valid) {

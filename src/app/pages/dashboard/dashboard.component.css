@@ -17,6 +17,11 @@ mat-sidenav-content {
   justify-content: center;
 }
 
+.text-center {
+  margin: 30px;
+  padding: 30px;
+}
+
 .grid-card {
   display: grid;
   grid-template-columns: auto auto auto auto;

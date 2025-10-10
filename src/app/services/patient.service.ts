@@ -19,6 +19,9 @@ export class PatientService {
   getPatientID(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/showbyid/${id}`)
   }
+  getPatientDNI(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`)
+  }
 
   createPatient(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, data)

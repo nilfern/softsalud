@@ -4,6 +4,7 @@ mat-list-item {
   width: 100%;
   padding: 12px;
   min-height: 80px; /* Aumentar la altura de cada ítem */
+  
 }
 
 mat-list-item:hover {
@@ -17,6 +18,26 @@ mat-list-item:hover {
 
 .name {
   font-weight: bold;
+}
+
+.pendiente {
+  border: 1px;
+  margin: 33px;
+  font-size: small;
+  border-radius: 8px;
+  width: 175px;
+  text-align: center;
+  background: #e53333;
+}
+.attend { 
+  border: 1px;
+  margin-right: 120px;
+  margin-left: 33px;
+  font-size: small;
+  border-radius: 8px;
+  width: 175px;
+  text-align: center;
+  background: #0fba25;
 }
 
 .mat-list-container {
@@ -33,9 +54,48 @@ mat-list-item:hover {
   align-items: center; /* Alinear verticalmente */
   justify-content: space-between; /* Distribuir en horizontal */
   width: 100%;
+ 
 }
+
+.list-content2 {
+  display: flex;
+  align-items: center; /* Alinear verticalmente */
+  justify-content: flex-start; /* Distribuir en horizontal */
+  width: 100%;
+  gap: 10px;
+ flex-wrap: wrap;
+ 
+}
+
 
 .text-content {
   flex-grow: 1; /* Ocupa el espacio disponible */
   padding-left: 10px; /* Separación entre icono y texto */
+ 
+}
+
+@media (max-width: 850px) {
+mat-list-item {  
+  min-height: 280px; /* Aumentar la altura de cada ítem */
+}
+}
+
+@media (max-width: 480px) {
+mat-list-item {  
+  min-height: 280px; /* Aumentar la altura de cada ítem */
+}
+
+.list-content {
+ flex-wrap: wrap; 
+}
+
+.pendiente {  
+  margin: 1px; 
+  width: 75px;  
+}
+.attend { 
+  margin: 10px;  
+  width: 75px;  
+}
+
 }

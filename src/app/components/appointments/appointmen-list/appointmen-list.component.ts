@@ -45,7 +45,7 @@ export class AppointmenListComponent {
   getappointmentByPatient(): void {
     this.appoinmentService
       .getappointmentByPatient(Number(this.id), this.fecha)
-      .subscribe((response) => {
+      .subscribe((response) => {     
         this.clientesconcitas = response.data;
       });
   }

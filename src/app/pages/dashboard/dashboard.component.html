@@ -7,7 +7,12 @@
   <mat-sidenav-content>
     <div>
       <app-toolbar [sidenav]="sidenav"></app-toolbar>
-
+      @if ( user.role=="paciente" ) {
+         <mat-card class="text-center" fxLayout="column" fxLayoutAlign="center center" >
+       <h2>Mis Citas</h2>
+      </mat-card>
+      }
+ @if ( user.role=="empleado" || user.role=="administrador"|| user.role=="medico" ) {
       <div class="grid-card">
         <mat-card class="card" appearance="outlined">
           <mat-card-header>
@@ -42,6 +47,7 @@
           </mat-card-header>
         </mat-card>
       </div>
+    }
 
       @if ( user.role=="paciente" ) {
       <app-appointmen-list

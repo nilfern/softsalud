@@ -100,7 +100,8 @@ export class DashboardComponent {
   getApointmentAllCount(): void {
       this.appoinmentService.getappointmentAllCount(this.formattedDate).subscribe((response) => {
         this.clientesconcitas = response;
-        console.log(this.clientesconcitas.appointmentday);
+        console.log("nada");
+        console.log(this.clientesconcitas);
         this.isUserLoaded = true;
       });
   }  

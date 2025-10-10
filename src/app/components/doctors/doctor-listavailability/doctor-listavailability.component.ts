@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
   styleUrl: './doctor-listavailability.component.css',
 })
 export class DoctorListavailabilityComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellido', 'dni', 'seleccionar'];
+  displayedColumns: string[] = ['dni','nombre', 'apellido','telefono', 'seleccionar'];
 
   dataSource = new MatTableDataSource<any>();
   totalDoctores: number = 0;

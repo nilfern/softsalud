@@ -2,14 +2,30 @@
   <mat-list role="list">
     <mat-list-item *ngFor="let cliente of clientesconcitas; let i = index">
       <div class="list-content">
-        <!-- Avatar/Icono -->
-        <mat-icon matListAvatar>person</mat-icon>
+        <div class="list-content2">
+          <!-- Avatar/Icono -->
+          <mat-icon matListAvatar>person</mat-icon>
 
-        <!-- Información -->
-        <div class="text-content">
-          <div matLine class="name">{{ cliente.patients.name }}</div>
-          <div matLine class="secondary-text">
-            {{ cliente.patients.surname }}
+          <!-- Información -->
+          <div class="text-content">
+            <div matLine class="name">Paciente</div>
+            <div matLine class="secondary-text">
+              {{ cliente.patients.name }}
+            </div>
+            <div matLine class="secondary-text">
+              {{ cliente.patients.surname }}
+            </div>
+          </div>
+
+          <!-- Información -->
+          <div class="text-content">
+            <div matLine class="name">Fecha de cita</div>
+            <div matLine class="secondary-text">
+              {{ cliente.availabilities.date_availabilities }}
+            </div>
+            <div matLine class="secondary-text">
+              {{ cliente.availabilities.start_hour }}
+            </div>
           </div>
         </div>
 
@@ -26,6 +42,7 @@
           Atender
         </button>
       </div>
+
       <!-- Separador, pero no en el último elemento -->
       <mat-divider *ngIf="i < clientesconcitas.length - 1"></mat-divider>
     </mat-list-item>

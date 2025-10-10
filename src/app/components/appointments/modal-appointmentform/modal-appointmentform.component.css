@@ -4,6 +4,12 @@
   grid-gap: 10px;
   max-width: 100%;
 }
+.form-grid-cita {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-gap: 10px;
+  max-width: 100%;
+}
 
 .form-grid-filter {
   display: grid;
@@ -17,6 +23,8 @@
   align-items: center;
   justify-content: center;
 }
+
+
 
 .form-grid-patients {
   margin-top: 20px;
@@ -54,7 +62,7 @@ mat-button-toggle{
 
 @media (max-width: 768px) {
   .form-grid-filter {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;    
   }
 
   .form-grid-patients {
@@ -64,5 +72,21 @@ mat-button-toggle{
   .form-grid {
     grid-template-columns: 1fr;
   }
+
+.form-grid-cita {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap: 10px;
+  max-width: 100%;
 }
 
+}
+
+@media (max-width: 480px) {
+.form-grid-cita {
+  display: grid;
+  grid-template-columns: 1fr  ;
+  grid-gap: 10px;
+  max-width: 100%;
+}
+}

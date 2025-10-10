@@ -52,35 +52,28 @@ export class AvailabilityDoctorListComponent implements OnInit {
 
   timeForm!: FormGroup;
   timeSlots = [
-    { start: '7:00 a. m.', end: '7:15 a. m.' },
-    { start: '7:15 a. m.', end: '7:30 a. m.' },
-    { start: '7:30 a. m.', end: '7:45 a. m.' },
-    { start: '7:45 a. m.', end: '8:00 a. m.' },
-
-    { start: '8:00 a. m.', end: '8:15 a. m.' },
-    { start: '8:15 a. m.', end: '8:30 a. m.' },
-    { start: '8:30 a. m.', end: '8:45 a. m.' },
-    { start: '8:45 a. m.', end: '9:00 a. m.' },
-
-    { start: '9:00 a. m.', end: '9:15 a. m.' },
-    { start: '9:15 a. m.', end: '9:30 a. m.' },
-    { start: '9:30 a. m.', end: '9:45 a. m.' },
-    { start: '9:45 a. m.', end: '10:00 a. m.' },
-
-    { start: '10:00 a. m.', end: '10:15 a. m.' },
-    { start: '10:15 a. m.', end: '10:30 a. m.' },
-    { start: '10:30 a. m.', end: '10:45 a. m.' },
-    { start: '10:45 a. m.', end: '11:00 a. m.' },
-
-    { start: '11:00 a. m.', end: '11:15 a. m.' },
-    { start: '11:15 a. m.', end: '11:30 a. m.' },
-    { start: '11:30 a. m.', end: '11:45 a. m.' },
-    { start: '11:45 a. m.', end: '12:00 a. m.' },
-
-    { start: '12:00 a. m.', end: '12:15 a. m.' },
-    { start: '12:15 a. m.', end: '12:30 a. m.' },
-    { start: '12:30 a. m.', end: '12:45 a. m.' },
-    { start: '12:45 a. m.', end: '1:00 p. m.' },
+    { start: '7:00 a. m.', end: '7:30 a. m.' },
+  { start: '7:30 a. m.', end: '8:00 a. m.' },
+  { start: '8:00 a. m.', end: '8:30 a. m.' },
+  { start: '8:30 a. m.', end: '9:00 a. m.' },
+  { start: '9:00 a. m.', end: '9:30 a. m.' },
+  { start: '9:30 a. m.', end: '10:00 a. m.' },
+  { start: '10:00 a. m.', end: '10:30 a. m.' },
+  { start: '10:30 a. m.', end: '11:00 a. m.' },
+  { start: '11:00 a. m.', end: '11:30 a. m.' },
+  { start: '11:30 a. m.', end: '12:00 p. m.' },
+  { start: '12:00 p. m.', end: '12:30 p. m.' },
+  { start: '12:30 p. m.', end: '1:00 p. m.' },
+  { start: '1:00 p. m.', end: '1:30 p. m.' },
+  { start: '1:30 p. m.', end: '2:00 p. m.' },
+  { start: '2:00 p. m.', end: '2:30 p. m.' },
+  { start: '2:30 p. m.', end: '3:00 p. m.' },
+  { start: '3:00 p. m.', end: '3:30 p. m.' },
+  { start: '3:30 p. m.', end: '4:00 p. m.' },
+  { start: '4:00 p. m.', end: '4:30 p. m.' },
+  { start: '4:30 p. m.', end: '5:00 p. m.' },
+  { start: '5:00 p. m.', end: '5:30 p. m.' },
+  { start: '5:30 p. m.', end: '6:00 p. m.' },
   ];
 
   constructor(

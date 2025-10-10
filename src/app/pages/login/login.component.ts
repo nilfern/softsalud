@@ -8,6 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private toastr: ToastrService,
     private router: Router,
     private fb: FormBuilder
   ) {
@@ -41,7 +43,12 @@ export class LoginComponent {
       })
       .subscribe({
         next: (response) => {
-          this.router.navigate(['/dashboard']);
+          if (response.message === 'Invalid credentials') {
+            console.log(response.message);
+            this.toastr.error('error!', 'credenciales invalidas!');
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
         },
         error: (error) => {
           console.error('Error en el login:', error);

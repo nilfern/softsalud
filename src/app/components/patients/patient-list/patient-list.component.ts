@@ -31,7 +31,7 @@ ModalPatientformComponent;
   styleUrl: './patient-list.component.css',
 })
 export class PatientListComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellido', 'dni', 'accion'];
+  displayedColumns: string[] = ['dni','nombre', 'apellido','Telefono','accion'];
   dataSource = new MatTableDataSource<any>();
   totalClientes: number = 0;
 

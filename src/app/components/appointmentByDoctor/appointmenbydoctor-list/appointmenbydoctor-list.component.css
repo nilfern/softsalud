@@ -19,22 +19,21 @@ mat-list-item:hover {
   font-weight: bold;
 }
 
-.Pendiente {
+.pendiente {
   border: 1px;
-  margin: 3px;
+  margin: 33px;
   font-size: small;
   border-radius: 8px;
-  width: 75px;
+  width: 175px;
   text-align: center;
   background: #e53333;
 }
-.attend {
-  height: 35px;
+.attend { 
   border: 1px;
-  margin: 3px;
+  margin: 33px;
   font-size: small;
   border-radius: 8px;
-  width: 75px;
+  width: 175px;
   text-align: center;
   background: #0fba25;
 }
@@ -55,7 +54,45 @@ mat-list-item:hover {
   width: 100%;
 }
 
+.list-content2 {
+  display: flex;
+  align-items: center; /* Alinear verticalmente */
+  justify-content: flex-start; /* Distribuir en horizontal */
+  width: 100%;
+  gap: 10px;
+ flex-wrap: wrap;
+ 
+}
+
 .text-content {
   flex-grow: 1; /* Ocupa el espacio disponible */
   padding-left: 10px; /* Separación entre icono y texto */
+}
+
+
+
+@media (max-width: 850px) {
+mat-list-item {  
+  min-height: 280px; /* Aumentar la altura de cada ítem */
+}
+}
+
+@media (max-width: 480px) {
+mat-list-item {  
+  min-height: 280px; /* Aumentar la altura de cada ítem */
+}
+
+.list-content {
+ flex-wrap: wrap; 
+}
+
+
+.pendiente {  
+  margin: 1px; 
+  width: 75px;  
+}
+.attend { 
+  margin: 1px;  
+  width: 75px;  
+}
 }
